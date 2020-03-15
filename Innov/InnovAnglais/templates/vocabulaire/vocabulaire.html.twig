@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent()}} Ajout d'un abonnements {% endblock %}
+{% block contenu %}
+    <div class="container">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    
+    {% if is_granted('ROLE_ADMIN') %}
+        
+    <div class="form-group">
+                {{  form_label(form.user,  'User:',  {'label_attr':  {'class':  'col-sm-2  control-label'}}) }}
+       
+          {{ form_errors(form.user) }}
+          {{ form_widget(form.user) }}
+          {{ form_help(form.user) }}
+          
+    </div>
+        
+        {% endif %}
+     
+     <div class="form-group">
+    {{  form_label(form.libelle,  'Libelle:',  {'label_attr':  {'class':  'col-sm-2  control-label'}}) }} 
+        
+        {{ form_errors(form.libelle) }} 
+        {{ form_widget(form.libelle) }} 
+        {{ form_help(form.libelle) }}
+       
+    </div>  
+    <div class="form-group">
+    {{  form_label(form.categories,  'Categories:',  {'label_attr':  {'class':  'col-sm-2  control-label'}}) }} 
+        
+        {{ form_errors(form.categories) }} 
+        {{ form_widget(form.categories) }} 
+        {{ form_help(form.categories) }}
+        
+    </div>  
+        
+           <div class="form-group">
+                {{  form_label(form.nom,  'Nom:',  {'label_attr':  {'class':  'col-sm-2  control-label'}}) }}
+        
+          {{ form_errors(form.nom) }}
+          {{ form_widget(form.nom) }}
+          {{ form_help(form.nom) }}
+        
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        {{ form_widget(form.save) }} 
+        </div>
+    </div>
+        
+    {{ form_end(form) }}  
+    </div>
+    
+    <div class="container">
+    <br><br><br><br><br><br>
+     {{ form_start(form1) }}
+     <h4>Associer un mot à un thèmes :</h4>
+      <div class="form-group">
+    {{  form_label(form1.vocabulaire,  'Vocabulaire:',  {'label_attr':  {'class':  'col-sm-2  control-label'}}) }} 
+       
+        {{ form_errors(form1.vocabulaire) }} 
+        {{ form_widget(form1.vocabulaire) }} 
+        {{ form_help(form1.vocabulaire) }}
+        
+    </div>         
+         <div class="form-group">
+    {{  form_label(form1.theme,  'Theme:',  {'label_attr':  {'class':  'col-sm-2  control-label'}}) }} 
+        
+        {{ form_errors(form1.theme) }} 
+        {{ form_widget(form1.theme) }} 
+        {{ form_help(form1.theme) }}
+       
+    </div>          
+         <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="btTheme" class="btn btn-primary">Ajoutez!</button>
+        </div>
+    </div>
+     
+         {{ form_end(form1) }} 
+    </div>
+{% endblock %}   

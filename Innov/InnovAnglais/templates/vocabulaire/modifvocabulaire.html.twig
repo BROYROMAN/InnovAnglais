@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent()}} Ajout d'un abonnements {% endblock %}
+{% block contenu %}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="form-group">
+        
+                {{ form_label(form.libelle, 'Libelle:', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-10">
+          {{ form_errors(form.libelle) }}
+          {{ form_widget(form.libelle) }}
+          {{ form_help(form.libelle) }}
+        </div>  
+    </div>
+        
+            <div class="form-group">
+        
+                {{ form_label(form.categories, 'Categories:', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-10">
+          {{ form_errors(form.categories) }}
+          {{ form_widget(form.categories) }}
+          {{ form_help(form.categories) }}
+        </div>  
+    </div>
+    
+     
+{{ form_end(form) }}
+{% endblock %}

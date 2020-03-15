@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent()}} Fin du test  {% endblock %}
+{% block contenu %}
+<div class="container">
+      
+	
+	<main>
+	<div class="container">
+	     <h1>Tu as Fini!</h1>
+	     <p>Bravo! You tu as fini le Test</p>
+	     <p>Final score: {{score}} </p>
+	     <a href="question.php?n=1" class="start">Take Test Again</a>
+	     
+	</div>
+      </main>
+              
+{% endblock %}   {# empty Twig template #}

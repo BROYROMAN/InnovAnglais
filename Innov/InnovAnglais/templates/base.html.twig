@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        {% block body %}       <nav class="navbar navbar-inverse navbar-default navbarnavbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+                 <a class="navbar-brand" href="{{ path('accueil') }}">
+               <img alt="Brand" src="images/innovanglais.png" width="50%" class="img-circle" />
+             </a>
+              <a class="navbar-brand" href="{{ path('accueil') }}">InnovAnglais</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{{ path('accueil') }}">Accueil</a></li>
+              
+              {% if is_granted('ROLE_ADMIN') %}
+           <li class="dropdown">
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilisateur</a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="{{ path('ajoututilisateur') }}">Ajout</a></li>
+                     <li><a class="dropdown-item" href="{{ path('listeutilisateur') }}">Liste</a></li>
+                     
+                  </ul>
+                </li>
+                
+                   <li class="dropdown">
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Abonnements</a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="{{ path('abonnements') }}">Ajout</a></li>
+                     <li><a class="dropdown-item" href="{{ path('listeabonnements') }}">Liste</a></li>
+                     
+                  </ul>
+                </li>
+                
+                <li class="dropdown">
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entreprise</a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="{{ path('entreprise') }}">Ajout</a></li>
+                     <li><a class="dropdown-item" href="{{ path('listeentreprise') }}">Liste</a></li>
+                     
+                  </ul>
+                </li>
+                
+                
+                 <li class="dropdown">
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Theme</a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="{{ path('theme') }}">Ajout</a></li>
+                     <li><a class="dropdown-item" href="{{ path('listetheme') }}">Liste</a></li>
+                     
+                  </ul>
+                </li>
+                 
+                <li class="dropdown">
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Test</a>
+                 <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{{path('test1',{'id':1})}}">Faire un Test</a></li>
+                     <li><a class="dropdown-item" href="{{ path('test') }}">Ajout</a></li>
+                     <li><a class="dropdown-item" href="{{ path('listetest') }}">Liste</a></li>
+                     
+                  </ul>
+                </li>
+                
+                 <li class="dropdown">
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vocabulaire</a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="{{ path('vocabulaire') }}">Ajout</a></li>
+                     <li><a class="dropdown-item" href="{{ path('listevocabulaire') }}">Liste</a></li>
+                     
+                  </ul>
+                </li>
+                {% endif %}
+                
+                
+              
+             {% if  is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+              <li><a href="{{ path('compte') }}">Espace Membre</a></li>
+               {% endif %}
+              {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ path('inscrire') }}">S'inscrire</a></li>
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+{% else %}  
+               <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+{% endif %}
+              
+                          </ul>
+           <form class="navbar-form navbar-right">
+           <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-
+label="Rechercher">
+           <button class="btn btn-outline-success my-2 my-sm-0" 
+type="submit">OK</button>
+           </form> 
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+                <div class="row" >
+                    <div class="center-block col-md-10" style="float:none">   
+                    {% block contenu %}
+                    {% endblock %} 
+                    {% endblock %}
+        </div><!--/.nav-collapse -->
+      </div>
+        {% block javascripts %}    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{asset('js/jquery-3.2.1.min.js')}}"><\/script>')</script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>{% endblock %}
+    </body>
+</html>

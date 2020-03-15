@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent()}} Ajout d'un abonnements {% endblock %}
+{% block contenu %}
+<div class="container">
+        <div class="current">Question {{numero}} sur {{nombre.nb}}</div>
+	<p class="question">
+	</p>
+	<form name="form" method="POST">
+            {{question.question}}
+	      <ul class="choices">
+	        {% for choix in leschoix %}
+                    <li><input name="choice" type="radio" value="{{choix.id}}" />{{choix.libelle}}</li>
+		{% endfor %}
+	      </ul>
+              {% if (numero == nombre.nb)%}
+      <input type="submit" name="submit" value="Fini" />  
+     {%else%}
+       <input type="submit" name="submit" value="Suivant" />
+          {%endif%}	    
+	      <input type="hidden" name="number" value="{{numero}}" />
+	</form>
+      </div>
+        
+ 
+{% endblock %}   

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent()}} Liste des utilisateurs {% endblock %}
+{% block contenu %}
+    <h1> Liste des utilisateurs </h1>
+    {% if not liste is empty %}
+        {{ form_start(form)}} 
+    <table class="table">
+        <tr><th>Username</th><th>Email</th><th>Nom</th><th>Prénom</th><th>Date Naissance</th><th>Roles</th><th>Abonnements</th><th>Entreprise</th><th>Nom du fichier </th><th>Date</th><th>Extension</th><th>Taille</th><th>Photo</th><th></th></tr> 
+    {% for key,value in liste %}
+        <tr><td><a href="{{ path('utilisateur_modifier',{'id':value.id})}}">{{ value.username }}</a></td><td>{{ value.email }}</td><td>{{ value.nom }}</td><td>{{ value.prenom }}</td><td>{{ value.datenaissance|date("d/m/Y") }}</td><td>{% for key,value2 in value.roles %}{{ value2 }}{% endfor %}</td><td>{{ value.abonnements.libelle }}</td><td>{{ value.entreprise.libelle }}</td><td>{{ value.photo }}</td><td>{{ value.date|date("d/m/Y") }}</td><td>{{ value.extension}}</td><td>{{ value.taille}}</td><td><img src="uploads/fichiers/{{value.photo}}" WIDTH=150
+HEIGHT=70 alt="" /></td><td><input type="checkbox" name="cocher[]" value="{{ value.id }}"/></td></tr> 
+    {% endfor %}
+    </table>
+    {{ form_end(form)}}
+{% else %}
+    Aucun utilisateur à afficher
+{% endif %}
+{% endblock %}
