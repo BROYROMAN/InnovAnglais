@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Link
-Name=LgmRefresh [Reboot]
-Icon=/usr/share/icons/fish_bleu.png
-URL=/usr/share/applications/lgmRefreshReboot.desktop
